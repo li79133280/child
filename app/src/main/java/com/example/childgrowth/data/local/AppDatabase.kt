@@ -5,6 +5,20 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+/**
+ * Room 数据库定义
+ *
+ * 迁移策略：
+ * 1. 每次 schema 变更时，在 Migrations.kt 中添加新的 Migration 对象
+ * 2. 版本号 +1，并在 all() 数组中注册
+ * 3. fallbackToDestructiveMigration() 仅作为最后手段，正式环境应移除
+ *
+ * 添加新实体或字段时：
+ * 1. 修改 Entity 类
+ * 2. 增加 version 号
+ * 3. 在 Migrations.kt 添加对应的 Migration
+ * 4. 在 all() 数组中注册
+ */
 @Database(
     entities = [
         ChildProfile::class,
@@ -46,7 +60,8 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         fun build(context: Context): AppDatabase =
             Room.databaseBuilder(context, AppDatabase::class.java, "child_growth_journal.db")
-                .fallbackToDestructiveMigration() // TODO: 上架前改为正式 migration
+                .addMigrations(*Migrations.all())
+                .fallbackToDestructiveMigration()
                 .build()
     }
 }
