@@ -14,8 +14,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.childgrowth.R
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -40,7 +42,7 @@ internal fun RecordDialogFrame(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 Text(
-                    text = "默认自动记录当前时间，尽量减少手动输入。",
+                    text = stringResource(R.string.dialog_auto_time_hint),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -48,10 +50,10 @@ internal fun RecordDialogFrame(
             }
         },
         confirmButton = {
-            TextButton(onClick = onConfirm) { Text("保存") }
+            TextButton(onClick = onConfirm) { Text(stringResource(R.string.save)) }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("取消") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) }
         },
     )
 }

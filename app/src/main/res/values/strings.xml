@@ -1,3 +1,98 @@
 <resources>
     <string name="app_name">儿童成长记录</string>
+
+    <!-- 通用 -->
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="note_hint">备注</string>
+    <string name="dialog_auto_time_hint">默认自动记录当前时间，尽量减少手动输入。</string>
+
+    <!-- 弹窗标题 -->
+    <string name="dialog_title_vaccine">记录疫苗</string>
+    <string name="dialog_title_medication">记录吃药</string>
+    <string name="dialog_title_outing">记录出游</string>
+    <string name="dialog_title_growth">记录身高体重</string>
+    <string name="dialog_title_health">记录生病</string>
+    <string name="dialog_title_kindergarten">记录园所内容</string>
+    <string name="dialog_title_reminder">新增提醒</string>
+    <string name="dialog_title_custom_event">记录自定义事件</string>
+    <string name="dialog_title_edit_child">编辑孩子信息</string>
+    <string name="dialog_title_feeding">记录喂养</string>
+    <string name="dialog_title_diaper">记录换尿布</string>
+    <string name="dialog_title_milestone">记录成长里程碑</string>
+    <string name="dialog_title_temperature">记录体温</string>
+    <string name="dialog_title_mood">记录情绪</string>
+
+    <!-- 疫苗 -->
+    <string name="vaccine_name">疫苗名称</string>
+    <string name="vaccine_dose">针次</string>
+    <string name="vaccine_next_days">距离下次接种天数</string>
+    <string name="vaccine_location">接种地点</string>
+    <string name="vaccine_default_dose">本次接种</string>
+
+    <!-- 吃药 -->
+    <string name="medication_name">药名</string>
+    <string name="medication_symptom">症状</string>
+    <string name="medication_dose">剂量</string>
+    <string name="medication_interval">距离下次服药小时数</string>
+
+    <!-- 出游 -->
+    <string name="outing_title">活动名称</string>
+    <string name="outing_place">地点</string>
+
+    <!-- 身高体重 -->
+    <string name="growth_height">身高（cm）</string>
+    <string name="growth_weight">体重（kg）</string>
+
+    <!-- 健康 -->
+    <string name="health_event_type">症状或事件</string>
+
+    <!-- 园所 -->
+    <string name="kindergarten_type">类型，例如活动、表扬、请假</string>
+    <string name="kindergarten_title">标题</string>
+
+    <!-- 提醒 -->
+    <string name="reminder_type">提醒类型，例如体检、复诊</string>
+    <string name="reminder_title">提醒标题</string>
+    <string name="reminder_days">距离提醒天数</string>
+
+    <!-- 自定义事件 -->
+    <string name="custom_category">分类</string>
+    <string name="custom_title">标题</string>
+
+    <!-- 编辑孩子 -->
+    <string name="child_name">姓名</string>
+    <string name="child_gender">性别（男孩/女孩）</string>
+    <string name="child_birthday">生日（如 2025-04-24）</string>
+    <string name="child_avatar">头像文字（如 弟、姐）</string>
+    <string name="child_theme_color">主题色（如 #2E7D6B）</string>
+    <string name="child_default_gender">男孩</string>
+
+    <!-- 喂养 -->
+    <string name="feeding_type">类型（母乳/奶粉/辅食）</string>
+    <string name="feeding_amount">量（如 120ml、半碗）</string>
+
+    <!-- 尿布 -->
+    <string name="diaper_type">类型（湿/便/混合）</string>
+
+    <!-- 里程碑 -->
+    <string name="milestone_type">类型（笑/说话/走路等）</string>
+
+    <!-- 体温 -->
+    <string name="temperature_value">体温（如 36.5）</string>
+
+    <!-- 情绪 -->
+    <string name="mood_type">情绪（开心/哭闹/安静等）</string>
+
+    <!-- 导航 -->
+    <string name="tab_home">首页</string>
+    <string name="tab_records">记录</string>
+    <string name="tab_history">历史</string>
+    <string name="tab_growth">曲线</string>
+
+    <!-- 其他 -->
+    <string name="child_switch">孩子切换</string>
+    <string name="edit">编辑</string>
+    <string name="empty_records">还没有记录，可以先从睡眠、吃药或身高体重开始。</string>
+    <string name="growth_empty_hint">先添加一条身高体重记录，才能生成成长曲线。</string>
 </resources>
