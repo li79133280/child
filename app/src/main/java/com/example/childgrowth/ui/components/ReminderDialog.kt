@@ -5,7 +5,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import com.example.childgrowth.R
 
 @Composable
 fun ReminderDialog(
@@ -17,14 +19,14 @@ fun ReminderDialog(
     var days by remember { mutableStateOf("") }
     var note by remember { mutableStateOf("") }
 
-    RecordDialogFrame(title = "新增提醒", onDismiss = onDismiss, onConfirm = {
+    RecordDialogFrame(title = stringResource(R.string.dialog_title_reminder), onDismiss = onDismiss, onConfirm = {
         if (reminderType.isNotBlank() && title.isNotBlank()) {
             onConfirm(reminderType.trim(), title.trim(), days.toIntOrNull(), note.trim())
         }
     }) {
-        FormField(value = reminderType, onValueChange = { reminderType = it }, label = "提醒类型，例如体检、复诊")
-        FormField(value = title, onValueChange = { title = it }, label = "提醒标题")
-        FormField(value = days, onValueChange = { days = it }, label = "距离提醒天数", keyboardType = KeyboardType.Number)
-        FormField(value = note, onValueChange = { note = it }, label = "备注")
+        FormField(value = reminderType, onValueChange = { reminderType = it }, label = stringResource(R.string.reminder_type))
+        FormField(value = title, onValueChange = { title = it }, label = stringResource(R.string.reminder_title))
+        FormField(value = days, onValueChange = { days = it }, label = stringResource(R.string.reminder_days), keyboardType = KeyboardType.Number)
+        FormField(value = note, onValueChange = { note = it }, label = stringResource(R.string.note_hint))
     }
 }

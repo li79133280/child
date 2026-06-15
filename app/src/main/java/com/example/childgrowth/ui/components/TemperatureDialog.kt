@@ -5,7 +5,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import com.example.childgrowth.R
 
 @Composable
 fun TemperatureDialog(
@@ -15,13 +17,13 @@ fun TemperatureDialog(
     var temperature by remember { mutableStateOf("") }
     var note by remember { mutableStateOf("") }
 
-    RecordDialogFrame(title = "记录体温", onDismiss = onDismiss, onConfirm = {
+    RecordDialogFrame(title = stringResource(R.string.dialog_title_temperature), onDismiss = onDismiss, onConfirm = {
         val temp = temperature.toDoubleOrNull()
         if (temp != null) {
             onConfirm(temp, note.trim())
         }
     }) {
-        FormField(value = temperature, onValueChange = { temperature = it }, label = "体温（如 36.5）", keyboardType = KeyboardType.Decimal)
-        FormField(value = note, onValueChange = { note = it }, label = "备注")
+        FormField(value = temperature, onValueChange = { temperature = it }, label = stringResource(R.string.temperature_value), keyboardType = KeyboardType.Decimal)
+        FormField(value = note, onValueChange = { note = it }, label = stringResource(R.string.note_hint))
     }
 }

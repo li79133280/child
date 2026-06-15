@@ -5,6 +5,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
+import com.example.childgrowth.R
 
 @Composable
 fun FeedingDialog(
@@ -15,13 +17,13 @@ fun FeedingDialog(
     var amount by remember { mutableStateOf("") }
     var note by remember { mutableStateOf("") }
 
-    RecordDialogFrame(title = "记录喂养", onDismiss = onDismiss, onConfirm = {
+    RecordDialogFrame(title = stringResource(R.string.dialog_title_feeding), onDismiss = onDismiss, onConfirm = {
         if (feedType.isNotBlank()) {
             onConfirm(feedType.trim(), amount.trim(), note.trim())
         }
     }) {
-        FormField(value = feedType, onValueChange = { feedType = it }, label = "类型（母乳/奶粉/辅食）")
-        FormField(value = amount, onValueChange = { amount = it }, label = "量（如 120ml、半碗）")
-        FormField(value = note, onValueChange = { note = it }, label = "备注")
+        FormField(value = feedType, onValueChange = { feedType = it }, label = stringResource(R.string.feeding_type))
+        FormField(value = amount, onValueChange = { amount = it }, label = stringResource(R.string.feeding_amount))
+        FormField(value = note, onValueChange = { note = it }, label = stringResource(R.string.note_hint))
     }
 }

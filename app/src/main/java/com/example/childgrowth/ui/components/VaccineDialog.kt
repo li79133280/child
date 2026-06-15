@@ -5,7 +5,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import com.example.childgrowth.R
 
 @Composable
 fun VaccineDialog(
@@ -18,21 +20,21 @@ fun VaccineDialog(
     var location by remember { mutableStateOf("") }
     var note by remember { mutableStateOf("") }
 
-    RecordDialogFrame(title = "记录疫苗", onDismiss = onDismiss, onConfirm = {
+    RecordDialogFrame(title = stringResource(R.string.dialog_title_vaccine), onDismiss = onDismiss, onConfirm = {
         if (vaccineName.isNotBlank()) {
             onConfirm(
                 vaccineName.trim(),
-                doseLabel.trim().ifBlank { "本次接种" },
+                doseLabel.trim().ifBlank { stringResource(R.string.vaccine_default_dose) },
                 nextDays.toIntOrNull(),
                 location.trim(),
                 note.trim(),
             )
         }
     }) {
-        FormField(value = vaccineName, onValueChange = { vaccineName = it }, label = "疫苗名称")
-        FormField(value = doseLabel, onValueChange = { doseLabel = it }, label = "针次")
-        FormField(value = nextDays, onValueChange = { nextDays = it }, label = "距离下次接种天数", keyboardType = KeyboardType.Number)
-        FormField(value = location, onValueChange = { location = it }, label = "接种地点")
-        FormField(value = note, onValueChange = { note = it }, label = "备注")
+        FormField(value = vaccineName, onValueChange = { vaccineName = it }, label = stringResource(R.string.vaccine_name))
+        FormField(value = doseLabel, onValueChange = { doseLabel = it }, label = stringResource(R.string.vaccine_dose))
+        FormField(value = nextDays, onValueChange = { nextDays = it }, label = stringResource(R.string.vaccine_next_days), keyboardType = KeyboardType.Number)
+        FormField(value = location, onValueChange = { location = it }, label = stringResource(R.string.vaccine_location))
+        FormField(value = note, onValueChange = { note = it }, label = stringResource(R.string.note_hint))
     }
 }

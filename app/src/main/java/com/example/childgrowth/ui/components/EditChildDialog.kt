@@ -15,7 +15,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.childgrowth.R
 
 @Composable
 fun EditChildDialog(
@@ -35,7 +37,7 @@ fun EditChildDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(text = "编辑孩子信息") },
+        title = { Text(text = stringResource(R.string.dialog_title_edit_child)) },
         text = {
             Column(
                 modifier = Modifier
@@ -44,11 +46,11 @@ fun EditChildDialog(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                FormField(value = name, onValueChange = { name = it }, label = "姓名")
-                FormField(value = gender, onValueChange = { gender = it }, label = "性别（男孩/女孩）")
-                FormField(value = birthdayText, onValueChange = { birthdayText = it }, label = "生日（如 2025-04-24）")
-                FormField(value = avatarLabel, onValueChange = { avatarLabel = it }, label = "头像文字（如 弟、姐）")
-                FormField(value = accentColor, onValueChange = { accentColor = it }, label = "主题色（如 #2E7D6B）")
+                FormField(value = name, onValueChange = { name = it }, label = stringResource(R.string.child_name))
+                FormField(value = gender, onValueChange = { gender = it }, label = stringResource(R.string.child_gender))
+                FormField(value = birthdayText, onValueChange = { birthdayText = it }, label = stringResource(R.string.child_birthday))
+                FormField(value = avatarLabel, onValueChange = { avatarLabel = it }, label = stringResource(R.string.child_avatar))
+                FormField(value = accentColor, onValueChange = { accentColor = it }, label = stringResource(R.string.child_theme_color))
             }
         },
         confirmButton = {
@@ -58,17 +60,17 @@ fun EditChildDialog(
                     if (birthdayMillis != null) {
                         onConfirm(
                             name.trim(),
-                            gender.trim().ifBlank { "男孩" },
+                            gender.trim().ifBlank { stringResource(R.string.child_default_gender) },
                             birthdayMillis,
                             accentColor.trim().ifBlank { "#2E7D6B" },
                             avatarLabel.trim().ifBlank { name.trim().first().toString() },
                         )
                     }
                 }
-            }) { Text("保存") }
+            }) { Text(stringResource(R.string.save)) }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("取消") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) }
         },
     )
 }

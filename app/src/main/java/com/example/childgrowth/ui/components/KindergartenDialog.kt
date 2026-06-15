@@ -5,6 +5,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
+import com.example.childgrowth.R
 
 @Composable
 fun KindergartenDialog(
@@ -15,13 +17,13 @@ fun KindergartenDialog(
     var title by remember { mutableStateOf("") }
     var note by remember { mutableStateOf("") }
 
-    RecordDialogFrame(title = "记录园所内容", onDismiss = onDismiss, onConfirm = {
+    RecordDialogFrame(title = stringResource(R.string.dialog_title_kindergarten), onDismiss = onDismiss, onConfirm = {
         if (eventType.isNotBlank() && title.isNotBlank()) {
             onConfirm(eventType.trim(), title.trim(), note.trim())
         }
     }) {
-        FormField(value = eventType, onValueChange = { eventType = it }, label = "类型，例如活动、表扬、请假")
-        FormField(value = title, onValueChange = { title = it }, label = "标题")
-        FormField(value = note, onValueChange = { note = it }, label = "备注")
+        FormField(value = eventType, onValueChange = { eventType = it }, label = stringResource(R.string.kindergarten_type))
+        FormField(value = title, onValueChange = { title = it }, label = stringResource(R.string.kindergarten_title))
+        FormField(value = note, onValueChange = { note = it }, label = stringResource(R.string.note_hint))
     }
 }

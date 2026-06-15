@@ -5,7 +5,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import com.example.childgrowth.R
 
 @Composable
 fun MedicationDialog(
@@ -18,7 +20,7 @@ fun MedicationDialog(
     var intervalHours by remember { mutableStateOf("") }
     var note by remember { mutableStateOf("") }
 
-    RecordDialogFrame(title = "记录吃药", onDismiss = onDismiss, onConfirm = {
+    RecordDialogFrame(title = stringResource(R.string.dialog_title_medication), onDismiss = onDismiss, onConfirm = {
         if (medicineName.isNotBlank()) {
             onConfirm(
                 medicineName.trim(),
@@ -29,10 +31,10 @@ fun MedicationDialog(
             )
         }
     }) {
-        FormField(value = medicineName, onValueChange = { medicineName = it }, label = "药名")
-        FormField(value = symptom, onValueChange = { symptom = it }, label = "症状")
-        FormField(value = dose, onValueChange = { dose = it }, label = "剂量")
-        FormField(value = intervalHours, onValueChange = { intervalHours = it }, label = "距离下次服药小时数", keyboardType = KeyboardType.Number)
-        FormField(value = note, onValueChange = { note = it }, label = "备注")
+        FormField(value = medicineName, onValueChange = { medicineName = it }, label = stringResource(R.string.medication_name))
+        FormField(value = symptom, onValueChange = { symptom = it }, label = stringResource(R.string.medication_symptom))
+        FormField(value = dose, onValueChange = { dose = it }, label = stringResource(R.string.medication_dose))
+        FormField(value = intervalHours, onValueChange = { intervalHours = it }, label = stringResource(R.string.medication_interval), keyboardType = KeyboardType.Number)
+        FormField(value = note, onValueChange = { note = it }, label = stringResource(R.string.note_hint))
     }
 }

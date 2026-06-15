@@ -5,7 +5,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
+import com.example.childgrowth.R
 
 @Composable
 fun GrowthDialog(
@@ -16,15 +18,15 @@ fun GrowthDialog(
     var weight by remember { mutableStateOf("") }
     var note by remember { mutableStateOf("") }
 
-    RecordDialogFrame(title = "记录身高体重", onDismiss = onDismiss, onConfirm = {
+    RecordDialogFrame(title = stringResource(R.string.dialog_title_growth), onDismiss = onDismiss, onConfirm = {
         val heightValue = height.toDoubleOrNull()
         val weightValue = weight.toDoubleOrNull()
         if (heightValue != null && weightValue != null) {
             onConfirm(heightValue, weightValue, note.trim())
         }
     }) {
-        FormField(value = height, onValueChange = { height = it }, label = "身高（cm）", keyboardType = KeyboardType.Decimal)
-        FormField(value = weight, onValueChange = { weight = it }, label = "体重（kg）", keyboardType = KeyboardType.Decimal)
-        FormField(value = note, onValueChange = { note = it }, label = "备注")
+        FormField(value = height, onValueChange = { height = it }, label = stringResource(R.string.growth_height), keyboardType = KeyboardType.Decimal)
+        FormField(value = weight, onValueChange = { weight = it }, label = stringResource(R.string.growth_weight), keyboardType = KeyboardType.Decimal)
+        FormField(value = note, onValueChange = { note = it }, label = stringResource(R.string.note_hint))
     }
 }

@@ -5,6 +5,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
+import com.example.childgrowth.R
 
 @Composable
 fun MoodDialog(
@@ -14,12 +16,12 @@ fun MoodDialog(
     var moodType by remember { mutableStateOf("") }
     var note by remember { mutableStateOf("") }
 
-    RecordDialogFrame(title = "记录情绪", onDismiss = onDismiss, onConfirm = {
+    RecordDialogFrame(title = stringResource(R.string.dialog_title_mood), onDismiss = onDismiss, onConfirm = {
         if (moodType.isNotBlank()) {
             onConfirm(moodType.trim(), note.trim())
         }
     }) {
-        FormField(value = moodType, onValueChange = { moodType = it }, label = "情绪（开心/哭闹/安静等）")
-        FormField(value = note, onValueChange = { note = it }, label = "备注")
+        FormField(value = moodType, onValueChange = { moodType = it }, label = stringResource(R.string.mood_type))
+        FormField(value = note, onValueChange = { note = it }, label = stringResource(R.string.note_hint))
     }
 }
