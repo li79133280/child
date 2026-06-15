@@ -24,7 +24,7 @@ import androidx.room.RoomDatabase
         MoodRecord::class,
     ],
     version = 3,
-    exportSchema = false,
+    exportSchema = true,
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun childProfileDao(): ChildProfileDao
@@ -46,7 +46,7 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         fun build(context: Context): AppDatabase =
             Room.databaseBuilder(context, AppDatabase::class.java, "child_growth_journal.db")
-                .fallbackToDestructiveMigration()
+                .fallbackToDestructiveMigration() // TODO: 上架前改为正式 migration
                 .build()
     }
 }
