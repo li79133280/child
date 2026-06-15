@@ -20,8 +20,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.childgrowth.R
 import com.example.childgrowth.data.local.ChildProfile
 import com.example.childgrowth.data.local.GrowthRecord
 import com.example.childgrowth.ui.monthsBetween
@@ -60,7 +62,7 @@ fun GrowthChart(
                 .padding(24.dp),
         ) {
             Text(
-                text = "先添加一条身高体重记录，才能生成成长曲线。",
+                text = stringResource(R.string.growth_empty_hint),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -83,6 +85,8 @@ fun GrowthChart(
     val maxValue = max(points.maxOf { it.value + 1f }, minValue + 1f)
 
     val outlineColor = MaterialTheme.colorScheme.outline
+    val monthLabel = stringResource(R.string.month_suffix)
+    val metricLabel = if (metric == GrowthMetric.Height) stringResource(R.string.growth_height) else stringResource(R.string.growth_weight)
 
     Column(verticalArrangement = Arrangement.spacedBy(12.dp), modifier = modifier) {
         Canvas(
@@ -144,7 +148,7 @@ fun GrowthChart(
                 val x = left + (right - left) * fraction
                 val age = minAge + xSpan * fraction
                 drawContext.canvas.nativeCanvas.drawText(
-                    "${age.toInt()}月",
+                    "${age.toInt()}$monthLabel",
                     x - 20f,
                     bottom + 34f,
                     labelPaint,
@@ -178,7 +182,7 @@ fun GrowthChart(
             }
 
             drawContext.canvas.nativeCanvas.drawText(
-                if (metric == GrowthMetric.Height) "身高（cm）" else "体重（kg）",
+                metricLabel,
                 left,
                 18f,
                 labelPaint.apply { textSize = 30f },

@@ -168,4 +168,5 @@
     <string name="weight">体重</string>
     <string name="latest_measurement">最近测量</string>
     <string name="no_measurement_records">还没有可展示的测量记录</string>
+    <string name="month_suffix">月</string>
 </resources>

@@ -19,7 +19,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.childgrowth.R
 import com.example.childgrowth.data.local.ChildProfile
 import com.example.childgrowth.data.repository.DashboardState
 import com.example.childgrowth.ui.components.CustomEventDialog
@@ -41,11 +43,11 @@ import com.example.childgrowth.ui.screens.GrowthScreen
 import com.example.childgrowth.ui.screens.HistoryScreen
 import com.example.childgrowth.ui.screens.RecordsScreen
 
-enum class AppTab(val label: String) {
-    Home("首页"),
-    Records("记录"),
-    History("历史"),
-    Growth("曲线"),
+enum class AppTab(val labelResId: Int) {
+    Home(R.string.tab_home),
+    Records(R.string.tab_records),
+    History(R.string.tab_history),
+    Growth(R.string.tab_growth),
 }
 
 enum class RecordDialogType {
@@ -83,25 +85,25 @@ fun GrowthJournalApp(viewModel: GrowthJournalViewModel) {
                     selected = currentTab == AppTab.Home,
                     onClick = { currentTab = AppTab.Home },
                     icon = { Icon(Icons.Outlined.Home, contentDescription = null) },
-                    label = { Text(AppTab.Home.label) },
+                    label = { Text(stringResource(AppTab.Home.labelResId)) },
                 )
                 NavigationBarItem(
                     selected = currentTab == AppTab.Records,
                     onClick = { currentTab = AppTab.Records },
                     icon = { Icon(Icons.Outlined.ChildCare, contentDescription = null) },
-                    label = { Text(AppTab.Records.label) },
+                    label = { Text(stringResource(AppTab.Records.labelResId)) },
                 )
                 NavigationBarItem(
                     selected = currentTab == AppTab.History,
                     onClick = { currentTab = AppTab.History },
                     icon = { Icon(Icons.AutoMirrored.Outlined.EventNote, contentDescription = null) },
-                    label = { Text(AppTab.History.label) },
+                    label = { Text(stringResource(AppTab.History.labelResId)) },
                 )
                 NavigationBarItem(
                     selected = currentTab == AppTab.Growth,
                     onClick = { currentTab = AppTab.Growth },
                     icon = { Icon(Icons.Outlined.AutoGraph, contentDescription = null) },
-                    label = { Text(AppTab.Growth.label) },
+                    label = { Text(stringResource(AppTab.Growth.labelResId)) },
                 )
             }
         },

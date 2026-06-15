@@ -27,9 +27,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.childgrowth.R
 import com.example.childgrowth.data.local.ChildProfile
 import com.example.childgrowth.data.repository.TimelineItem
 import com.example.childgrowth.ui.formatAge
@@ -71,7 +72,7 @@ fun ChildSwitcher(
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             Text(
-                text = "孩子切换",
+                text = stringResource(R.string.child_switch),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -129,7 +130,7 @@ fun ChildSwitcher(
                                 color = MaterialTheme.colorScheme.primaryContainer,
                             ) {
                                 Text(
-                                    text = "编辑",
+                                    text = stringResource(R.string.edit),
                                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                                     style = MaterialTheme.typography.labelMedium,
                                     color = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -180,7 +181,7 @@ fun RecentTimeline(
                 color = MaterialTheme.colorScheme.onSurface,
             )
             if (items.isEmpty()) {
-                EmptyState(message = "还没有记录，可以先从睡眠、吃药或身高体重开始。")
+                EmptyState(message = stringResource(R.string.empty_records))
             } else {
                 items.forEachIndexed { index, item ->
                     TimelineRow(item = item)
