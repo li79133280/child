@@ -25,8 +25,9 @@ import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.childgrowth.R
 import com.example.childgrowth.data.local.ChildProfile
 import com.example.childgrowth.data.repository.DashboardState
 import com.example.childgrowth.data.repository.ReminderItem
@@ -62,8 +63,8 @@ fun DashboardScreen(
     ) {
         item {
             HeaderBlock(
-                title = "成长总览",
-                subtitle = "聚焦幼儿园前后的健康、作息、出游、成长和园所内容",
+                title = stringResource(R.string.dashboard_title),
+                subtitle = stringResource(R.string.dashboard_subtitle),
             )
         }
         item {
@@ -87,7 +88,7 @@ fun DashboardScreen(
             OverviewCard(dashboard = dashboard)
         }
         item {
-            RecentTimeline(title = "最近动态", items = dashboard.timeline)
+            RecentTimeline(title = stringResource(R.string.recent_activity), items = dashboard.timeline)
         }
         item { Spacer(modifier = Modifier.height(8.dp)) }
     }
@@ -108,13 +109,13 @@ private fun StageGuideCard(child: ChildProfile?) {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                text = child?.let { "${it.name} 当前阶段" } ?: "当前阶段",
+                text = child?.let { stringResource(R.string.stage_guide_title, it.name) } ?: stringResource(R.string.stage_guide_title_default),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             if (guide == null) {
                 Text(
-                    text = "请选择孩子后查看阶段建议",
+                    text = stringResource(R.string.stage_guide_select_hint),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -166,7 +167,7 @@ private fun ReminderCenterCard(
                         tint = MaterialTheme.colorScheme.primary,
                     )
                     Text(
-                        text = "提醒中心",
+                        text = stringResource(R.string.reminder_center),
                         style = MaterialTheme.typography.titleMedium,
                     )
                 }
@@ -176,7 +177,7 @@ private fun ReminderCenterCard(
                     color = MaterialTheme.colorScheme.primaryContainer,
                 ) {
                     Text(
-                        text = "新增提醒",
+                        text = stringResource(R.string.new_reminder),
                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
@@ -184,7 +185,7 @@ private fun ReminderCenterCard(
                 }
             }
             if (reminders.isEmpty()) {
-                EmptyState(message = "暂时没有待提醒的事情")
+                EmptyState(message = stringResource(R.string.no_reminders))
             } else {
                 reminders.forEach { reminder ->
                     ReminderItem(reminder = reminder)
@@ -248,45 +249,45 @@ private fun OverviewCard(dashboard: DashboardState) {
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text(
-                text = dashboard.child?.let { "${it.name} 的今日重点" } ?: "今日重点",
+                text = dashboard.child?.let { stringResource(R.string.today_focus, it.name) } ?: stringResource(R.string.today_focus_default),
                 style = MaterialTheme.typography.titleMedium,
                 color = Sage,
             )
             SummaryRow(
-                label = "下次疫苗",
+                label = stringResource(R.string.next_vaccine),
                 value = dashboard.upcomingVaccine?.let {
                     "${it.vaccineName} · ${formatDateTime(it.nextDueAt ?: it.administeredAt)}"
-                } ?: "暂未安排",
+                } ?: stringResource(R.string.not_scheduled),
             )
             SummaryRow(
-                label = "下次吃药",
-                value = dashboard.nextMedication?.let { formatMedicationCountdown(it, now) } ?: "暂未设置",
+                label = stringResource(R.string.next_medication),
+                value = dashboard.nextMedication?.let { formatMedicationCountdown(it, now) } ?: stringResource(R.string.not_set),
             )
             SummaryRow(
-                label = "睡眠状态",
+                label = stringResource(R.string.sleep_status),
                 value = when {
-                    dashboard.openSleep != null -> "正在睡觉，开始于 ${formatDateTime(dashboard.openSleep.sleptAt)}"
+                    dashboard.openSleep != null -> stringResource(R.string.sleeping_now, formatDateTime(dashboard.openSleep.sleptAt))
                     dashboard.latestSleep != null -> formatSleepSummary(dashboard.latestSleep)
-                    else -> "还没有睡眠记录"
+                    else -> stringResource(R.string.no_sleep_records)
                 },
             )
             SummaryRow(
-                label = "最近出游",
+                label = stringResource(R.string.recent_outing),
                 value = dashboard.latestOuting?.let {
-                    "${it.title} · ${it.place.ifBlank { "未填写地点" }}"
-                } ?: "还没有出游记录",
+                    "${it.title} · ${it.place.ifBlank { stringResource(R.string.no_place) }}"
+                } ?: stringResource(R.string.no_outing_records),
             )
             SummaryRow(
-                label = "最近园所内容",
+                label = stringResource(R.string.recent_kindergarten),
                 value = dashboard.latestKindergarten?.let {
                     "${it.eventType} · ${it.title}"
-                } ?: "暂时没有园所记录",
+                } ?: stringResource(R.string.no_kindergarten_records),
             )
             SummaryRow(
-                label = "最近身高体重",
+                label = stringResource(R.string.recent_growth),
                 value = dashboard.latestGrowth?.let {
                     "${it.heightCm} cm / ${it.weightKg} kg"
-                } ?: "还没有生长记录",
+                } ?: stringResource(R.string.no_growth_records),
             )
         }
     }

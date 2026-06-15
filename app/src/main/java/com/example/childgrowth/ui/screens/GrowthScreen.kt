@@ -27,7 +27,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.childgrowth.R
 import com.example.childgrowth.data.local.ChildProfile
 import com.example.childgrowth.data.local.GrowthRecord
 import com.example.childgrowth.data.repository.DashboardState
@@ -67,8 +69,8 @@ fun GrowthScreen(
     ) {
         item {
             HeaderBlock(
-                title = "成长曲线",
-                subtitle = "按月龄观察身高体重变化，也能对比两个孩子",
+                title = stringResource(R.string.growth_title),
+                subtitle = stringResource(R.string.growth_subtitle),
             )
         }
         item {
@@ -130,7 +132,7 @@ private fun GrowthChartCard(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = "生长趋势",
+                    text = stringResource(R.string.growth_trend),
                     style = MaterialTheme.typography.titleMedium,
                 )
                 if (children.size > 1) {
@@ -139,7 +141,7 @@ private fun GrowthChartCard(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
-                            text = "对比模式",
+                            text = stringResource(R.string.compare_mode),
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -158,7 +160,7 @@ private fun GrowthChartCard(
                 FilterChip(
                     selected = metric == GrowthMetric.Height,
                     onClick = { onMetricChange(GrowthMetric.Height) },
-                    label = { Text("身高") },
+                    label = { Text(stringResource(R.string.height)) },
                     shape = RoundedCornerShape(8.dp),
                     colors = FilterChipDefaults.filterChipColors(
                         selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -168,7 +170,7 @@ private fun GrowthChartCard(
                 FilterChip(
                     selected = metric == GrowthMetric.Weight,
                     onClick = { onMetricChange(GrowthMetric.Weight) },
-                    label = { Text("体重") },
+                    label = { Text(stringResource(R.string.weight)) },
                     shape = RoundedCornerShape(8.dp),
                     colors = FilterChipDefaults.filterChipColors(
                         selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -203,7 +205,7 @@ private fun LatestGrowthSummary(
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text(
-                text = "最近测量",
+                text = stringResource(R.string.latest_measurement),
                 style = MaterialTheme.typography.titleMedium,
                 color = Sage,
             )
@@ -216,7 +218,7 @@ private fun LatestGrowthSummary(
                 }
             if (latestRecords.isEmpty()) {
                 Text(
-                    text = "还没有可展示的测量记录",
+                    text = stringResource(R.string.no_measurement_records),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -265,14 +267,14 @@ private fun OverviewCard(dashboard: DashboardState) {
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text(
-                text = dashboard.child?.let { "${it.name} 的今日重点" } ?: "今日重点",
+                text = dashboard.child?.let { stringResource(R.string.today_focus, it.name) } ?: stringResource(R.string.today_focus_default),
                 style = MaterialTheme.typography.titleMedium,
             )
             SummaryRow(
-                label = "最近身高体重",
+                label = stringResource(R.string.recent_growth),
                 value = dashboard.latestGrowth?.let {
                     "${it.heightCm} cm / ${it.weightKg} kg"
-                } ?: "还没有生长记录",
+                } ?: stringResource(R.string.no_growth_records),
             )
         }
     }

@@ -22,24 +22,26 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.childgrowth.R
 import com.example.childgrowth.data.local.ChildProfile
 import com.example.childgrowth.data.repository.DashboardState
 import com.example.childgrowth.ui.components.ChildSwitcher
 import com.example.childgrowth.ui.components.HeaderBlock
 import com.example.childgrowth.ui.components.RecentTimeline
 
-enum class TimelineFilter(val label: String) {
-    All("全部"),
-    Reminder("提醒"),
-    Vaccine("疫苗"),
-    Medication("吃药"),
-    Sleep("睡眠"),
-    Outing("出游"),
-    Growth("生长"),
-    Health("健康"),
-    Kindergarten("园所"),
-    Custom("自定义"),
+enum class TimelineFilter(val labelResId: Int) {
+    All(R.string.filter_all),
+    Reminder(R.string.filter_reminder),
+    Vaccine(R.string.filter_vaccine),
+    Medication(R.string.filter_medication),
+    Sleep(R.string.filter_sleep),
+    Outing(R.string.filter_outing),
+    Growth(R.string.filter_growth),
+    Health(R.string.filter_health),
+    Kindergarten(R.string.filter_kindergarten),
+    Custom(R.string.filter_custom),
 }
 
 @Composable
@@ -75,8 +77,8 @@ fun HistoryScreen(
     ) {
         item {
             HeaderBlock(
-                title = "历史记录",
-                subtitle = "按类型筛选记录，后续可扩展日期区间和关键词搜索",
+                title = stringResource(R.string.history_title),
+                subtitle = stringResource(R.string.history_subtitle),
             )
         }
         item {
@@ -91,7 +93,7 @@ fun HistoryScreen(
             HistoryFilterCard(currentFilter = filter, onSelect = { filter = it })
         }
         item {
-            RecentTimeline(title = "筛选结果", items = filteredItems)
+            RecentTimeline(title = stringResource(R.string.filter_result), items = filteredItems)
         }
         item { Spacer(modifier = Modifier.height(8.dp)) }
     }
@@ -113,7 +115,7 @@ private fun HistoryFilterCard(
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             Text(
-                text = "类型筛选",
+                text = stringResource(R.string.filter_type),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -124,7 +126,7 @@ private fun HistoryFilterCard(
                             FilterChip(
                                 selected = currentFilter == filter,
                                 onClick = { onSelect(filter) },
-                                label = { Text(filter.label) },
+                                label = { Text(stringResource(filter.labelResId)) },
                                 shape = RoundedCornerShape(8.dp),
                                 colors = FilterChipDefaults.filterChipColors(
                                     selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,

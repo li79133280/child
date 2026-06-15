@@ -90,9 +90,82 @@
     <string name="tab_history">历史</string>
     <string name="tab_growth">曲线</string>
 
-    <!-- 其他 -->
+    <!-- 通用组件 -->
     <string name="child_switch">孩子切换</string>
     <string name="edit">编辑</string>
     <string name="empty_records">还没有记录，可以先从睡眠、吃药或身高体重开始。</string>
     <string name="growth_empty_hint">先添加一条身高体重记录，才能生成成长曲线。</string>
+
+    <!-- DashboardScreen -->
+    <string name="dashboard_title">成长总览</string>
+    <string name="dashboard_subtitle">聚焦幼儿园前后的健康、作息、出游、成长和园所内容</string>
+    <string name="stage_guide_title">%s 当前阶段</string>
+    <string name="stage_guide_title_default">当前阶段</string>
+    <string name="stage_guide_select_hint">请选择孩子后查看阶段建议</string>
+    <string name="reminder_center">提醒中心</string>
+    <string name="new_reminder">新增提醒</string>
+    <string name="no_reminders">暂时没有待提醒的事情</string>
+    <string name="recent_activity">最近动态</string>
+    <string name="today_focus">%s 的今日重点</string>
+    <string name="today_focus_default">今日重点</string>
+    <string name="next_vaccine">下次疫苗</string>
+    <string name="next_medication">下次吃药</string>
+    <string name="sleep_status">睡眠状态</string>
+    <string name="recent_outing">最近出游</string>
+    <string name="recent_kindergarten">最近园所内容</string>
+    <string name="recent_growth">最近身高体重</string>
+    <string name="not_scheduled">暂未安排</string>
+    <string name="not_set">暂未设置</string>
+    <string name="sleeping_now">正在睡觉，开始于 %s</string>
+    <string name="no_sleep_records">还没有睡眠记录</string>
+    <string name="no_place">未填写地点</string>
+    <string name="no_outing_records">还没有出游记录</string>
+    <string name="no_kindergarten_records">暂时没有园所记录</string>
+    <string name="no_growth_records">还没有生长记录</string>
+
+    <!-- RecordsScreen -->
+    <string name="records_title">快速记录</string>
+    <string name="records_subtitle">多数记录自动带上当前时间，尽量减少输入</string>
+    <string name="focus_card_title">当前阶段适合重点记录</string>
+    <string name="focus_card_hint">切换孩子后会显示更具体的建议</string>
+    <string name="record_feeding">喂养</string>
+    <string name="record_sleep">睡觉</string>
+    <string name="record_wake">起床</string>
+    <string name="record_diaper">换尿布</string>
+    <string name="record_vaccine">疫苗</string>
+    <string name="record_growth">身高体重</string>
+    <string name="record_outing">出游</string>
+    <string name="record_milestone">里程碑</string>
+    <string name="record_temperature">体温</string>
+    <string name="record_mood">情绪</string>
+    <string name="record_health">生病</string>
+    <string name="record_reminder">提醒</string>
+    <string name="record_kindergarten">园所</string>
+    <string name="record_more">更多</string>
+
+    <!-- HistoryScreen -->
+    <string name="history_title">历史记录</string>
+    <string name="history_subtitle">按类型筛选记录，后续可扩展日期区间和关键词搜索</string>
+    <string name="filter_type">类型筛选</string>
+    <string name="filter_result">筛选结果</string>
+    <string name="filter_all">全部</string>
+    <string name="filter_reminder">提醒</string>
+    <string name="filter_vaccine">疫苗</string>
+    <string name="filter_medication">吃药</string>
+    <string name="filter_sleep">睡眠</string>
+    <string name="filter_outing">出游</string>
+    <string name="filter_growth">生长</string>
+    <string name="filter_health">健康</string>
+    <string name="filter_kindergarten">园所</string>
+    <string name="filter_custom">自定义</string>
+
+    <!-- GrowthScreen -->
+    <string name="growth_title">成长曲线</string>
+    <string name="growth_subtitle">按月龄观察身高体重变化，也能对比两个孩子</string>
+    <string name="growth_trend">生长趋势</string>
+    <string name="compare_mode">对比模式</string>
+    <string name="height">身高</string>
+    <string name="weight">体重</string>
+    <string name="latest_measurement">最近测量</string>
+    <string name="no_measurement_records">还没有可展示的测量记录</string>
 </resources>

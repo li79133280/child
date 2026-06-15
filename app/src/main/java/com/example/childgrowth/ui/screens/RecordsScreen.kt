@@ -38,7 +38,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.childgrowth.R
 import com.example.childgrowth.data.local.ChildProfile
 import com.example.childgrowth.data.repository.DashboardState
 import com.example.childgrowth.ui.RecordDialogType
@@ -65,8 +67,8 @@ fun RecordsScreen(
     ) {
         item {
             HeaderBlock(
-                title = "快速记录",
-                subtitle = "多数记录自动带上当前时间，尽量减少输入",
+                title = stringResource(R.string.records_title),
+                subtitle = stringResource(R.string.records_subtitle),
             )
         }
         item {
@@ -107,13 +109,13 @@ private fun FocusCard(child: ChildProfile?) {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                text = "当前阶段适合重点记录",
+                text = stringResource(R.string.focus_card_title),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             if (guide == null) {
                 Text(
-                    text = "切换孩子后会显示更具体的建议",
+                    text = stringResource(R.string.focus_card_hint),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.outline,
                 )
@@ -151,14 +153,14 @@ fun RecordButtonGrid(
         ) {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 RecordActionCard(
-                    title = "喂养",
+                    title = stringResource(R.string.record_feeding),
                     icon = Icons.Outlined.Restaurant,
                     color = recordColors.medication,
                     surfaceColor = recordColors.medicationSurface,
                     modifier = Modifier.weight(1f),
                 ) { onOpenDialog(RecordDialogType.Feeding) }
                 RecordActionCard(
-                    title = "睡觉",
+                    title = stringResource(R.string.record_sleep),
                     icon = Icons.Outlined.Bedtime,
                     color = recordColors.sleep,
                     surfaceColor = recordColors.sleepSurface,
@@ -169,7 +171,7 @@ fun RecordButtonGrid(
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 RecordActionCard(
-                    title = "起床",
+                    title = stringResource(R.string.record_wake),
                     icon = Icons.Outlined.WbSunny,
                     color = recordColors.sleep,
                     surfaceColor = recordColors.sleepSurface,
@@ -178,7 +180,7 @@ fun RecordButtonGrid(
                     onClick = onEndSleep,
                 )
                 RecordActionCard(
-                    title = "换尿布",
+                    title = stringResource(R.string.record_diaper),
                     icon = Icons.Outlined.BabyChangingStation,
                     color = recordColors.outing,
                     surfaceColor = recordColors.outingSurface,
@@ -187,14 +189,14 @@ fun RecordButtonGrid(
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 RecordActionCard(
-                    title = "疫苗",
+                    title = stringResource(R.string.record_vaccine),
                     icon = Icons.Outlined.ChildCare,
                     color = recordColors.vaccine,
                     surfaceColor = recordColors.vaccineSurface,
                     modifier = Modifier.weight(1f),
                 ) { onOpenDialog(RecordDialogType.Vaccine) }
                 RecordActionCard(
-                    title = "身高体重",
+                    title = stringResource(R.string.record_growth),
                     icon = Icons.Outlined.Straighten,
                     color = recordColors.growth,
                     surfaceColor = recordColors.growthSurface,
@@ -203,14 +205,14 @@ fun RecordButtonGrid(
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 RecordActionCard(
-                    title = "出游",
+                    title = stringResource(R.string.record_outing),
                     icon = Icons.Outlined.Park,
                     color = recordColors.outing,
                     surfaceColor = recordColors.outingSurface,
                     modifier = Modifier.weight(1f),
                 ) { onOpenDialog(RecordDialogType.Outing) }
                 RecordActionCard(
-                    title = "里程碑",
+                    title = stringResource(R.string.record_milestone),
                     icon = Icons.Outlined.EmojiEvents,
                     color = recordColors.milestone,
                     surfaceColor = recordColors.milestoneSurface,
@@ -219,14 +221,14 @@ fun RecordButtonGrid(
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 RecordActionCard(
-                    title = "体温",
+                    title = stringResource(R.string.record_temperature),
                     icon = Icons.Outlined.Thermostat,
                     color = recordColors.health,
                     surfaceColor = recordColors.healthSurface,
                     modifier = Modifier.weight(1f),
                 ) { onOpenDialog(RecordDialogType.Temperature) }
                 RecordActionCard(
-                    title = "情绪",
+                    title = stringResource(R.string.record_mood),
                     icon = Icons.Outlined.Mood,
                     color = recordColors.mood,
                     surfaceColor = recordColors.moodSurface,
@@ -235,14 +237,14 @@ fun RecordButtonGrid(
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 RecordActionCard(
-                    title = "生病",
+                    title = stringResource(R.string.record_health),
                     icon = Icons.Outlined.Sick,
                     color = recordColors.health,
                     surfaceColor = recordColors.healthSurface,
                     modifier = Modifier.weight(1f),
                 ) { onOpenDialog(RecordDialogType.Health) }
                 RecordActionCard(
-                    title = "提醒",
+                    title = stringResource(R.string.record_reminder),
                     icon = Icons.Outlined.Notifications,
                     color = recordColors.reminder,
                     surfaceColor = recordColors.reminderSurface,
@@ -251,14 +253,14 @@ fun RecordButtonGrid(
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 RecordActionCard(
-                    title = "园所",
+                    title = stringResource(R.string.record_kindergarten),
                     icon = Icons.Outlined.School,
                     color = recordColors.kindergarten,
                     surfaceColor = recordColors.kindergartenSurface,
                     modifier = Modifier.weight(1f),
                 ) { onOpenDialog(RecordDialogType.Kindergarten) }
                 RecordActionCard(
-                    title = "更多",
+                    title = stringResource(R.string.record_more),
                     icon = Icons.Outlined.MoreHoriz,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     surfaceColor = MaterialTheme.colorScheme.surfaceVariant,
