@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">儿童成长记录</string>
+    <string name="app_name">Child</string>
 
     <!-- 通用 -->
     <string name="save">保存</string>

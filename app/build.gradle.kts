@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.childgrowth"
+    namespace = "com.example.child"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.childgrowth"
+        applicationId = "com.example.child"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
